@@ -1,45 +1,55 @@
 package cli
 
 
-type ScanType string
-
-/// define all available scan types
-const (
-    /// Run every available scans
-    SCAN_ALL ScanType = "all"
-
-    /// only run web scans
-    SCAN_WEB ScanType = "web"
-
-    /// only run dns scans
-    SCAN_DNS ScanType = "dns"
-
-    /// only run windows scans
-    SCAN_WIN ScanType =  "windows"
-)
-
 
 /// CLI Options to be sent to the parser
-type Options struct {
+type ScanOptions struct {
 
     /// Output directory
     OutDirectory string
 
-    /// Target URL or IP to be scanned
-    TargetURL string
+    /// Target Domain to be scanned
+    TargetDomain string
 
-    /// Scan type to be ran
-    Scan ScanType
+    /// Target IPs to be scanned
+    TargetIP []string
 
-    /// Specify wether or not to run google dorks (default: false)
-    ShouldRunDorks bool
-
-    /// Prefered Wordlist
-    Wordlist string
+    /// JSON config filepath
+    Config string
 
     /// Proxy to use
     Proxy string
 
     /// Prefered rate-limit
     RateLimit int
+}
+
+/// Struct holding the various scan categories, this is basically what is
+/// unmarshalled from the config JSON file
+type ScanSettings struct {
+
+    /// Scan suite defined by the user
+    Scans []ScanSuite `json:scans`
+
+}
+
+
+/// Maps a category (web, dns, windows, whatever) to an array of scans
+type ScanSuite struct {
+
+    /// Category name
+    Category string `json:category`
+
+    /// scans to be run
+    Scans []Scan `json:scans`
+}
+
+
+/// A scan-type
+type Scan struct {
+    /// Name of the tool used for the scan
+    Name string `json:name`
+
+    /// Function / scan-type to be ran
+    Payload string  `json:payload`
 }
