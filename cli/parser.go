@@ -44,10 +44,10 @@ func GetParser(opts *ScanOptions) *cobra.Command {
     }
 
     var scan = &cobra.Command{
-        Use: "quickscan",
+        Use: "qs",
         Version: version,
         DisableSuggestions : true,
-        Short: "quickscan - yet another automated infrastructure scanner",
+        Short: "qs - yet another automated infrastructure scanner",
         Long: `CLI tool built to automate scanning on THM/HTB boxes`,
         Run: func(cmd *cobra.Command, args []string) {
         },

@@ -1,4 +1,4 @@
-module evil.djnn.sh/bogdan/quickscan
+module vrn-sh/qs
 
 go 1.19
 
