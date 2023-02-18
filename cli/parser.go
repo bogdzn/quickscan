@@ -9,6 +9,14 @@ import (
 	"github.com/spf13/cobra"
 )
 
+func loadDirectories(target string) string {
+    fullpath := "./scans/" + target
+    os.MkdirAll(fullpath, 0755)
+
+    /* TODO(bogdan): build a directory for each scan category */
+    return fullpath
+}
+
 
 func GetParser(opts *ScanOptions) *cobra.Command {
     version := "0.0.1"

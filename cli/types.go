@@ -29,7 +29,7 @@ type ScanOptions struct {
 type ScanSettings struct {
 
     /// Scan suite defined by the user
-    Scans []ScanSuite `json:scans`
+    Scans []ScanSuite `json:"scans"`
 
 }
 
@@ -38,18 +38,18 @@ type ScanSettings struct {
 type ScanSuite struct {
 
     /// Category name
-    Category string `json:category`
+    Category string `json:"category"`
 
     /// scans to be run
-    Scans []Scan `json:scans`
+    Scans []Scan `json:"scans"`
 }
 
 
 /// A scan-type
 type Scan struct {
     /// Name of the tool used for the scan
-    Name string `json:name`
+    Name string `json:"name"`
 
     /// Function / scan-type to be ran
-    Payload string  `json:payload`
+    Payload string  `json:"payload"`
 }
